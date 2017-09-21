@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation 
 import sys                   # interface with operating system and shell environment
 import math as m
+import iris as rs
 import os  # os.path - try importing functions within folders maybe
 
 
