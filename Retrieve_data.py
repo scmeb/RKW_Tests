@@ -28,6 +28,7 @@ print(dataset.dimensions['ni'])
 print(dataset.variables.keys())
 print(dataset.variables['prs'])
 
+# Create variables
 X = dataset.variables['xh'][:]
 Y = dataset.variables['yh'][:]
 Z = dataset.variables['z'][:]
@@ -38,6 +39,7 @@ TK = dataset.variables['tke'][:]
 PRS = dataset.variables['prs'][:] 
 
 
+# Choose number of contour lines
 def Levels(Var):
     min_var = Var.min()
     max_var = Var.max()
@@ -48,6 +50,7 @@ def Levels(Var):
     
     return levels
 
+# Create plot to compare to original RKW paper and Bryan
 def VelocityandWatervapourGraph(filename):
 
     i = 1
@@ -66,8 +69,8 @@ def VelocityandWatervapourGraph(filename):
         plt.colorbar()
         #plt.savefig(''.join([filename,'_' ,repr(i),'_WandMix.png']))
         plt.show()
-    
-        
+    	
+        # Find equivalent potential temperature
         TEMP = cv.compute_temp(TH[i,:,:,:],PRS[i,:,:,:]/100)
         TH_E = cv.compute_theta_e(TEMP,PRS[i,:,:,:]/100,MIX[i,:,:,:])
         TH_E.shape
